@@ -19,6 +19,7 @@ It comes with a minimal GUI (built in **Tkinter**) and allows you to export your
 
 1. **Prepare your deck list**  
    Example format:
+```
 1xEB02-010
 4xST18-001
 4xST18-004
@@ -27,7 +28,7 @@ It comes with a minimal GUI (built in **Tkinter**) and allows you to export your
 3xEB02-061
 4xOP07-064
 3xST18-005
-
+```
 
 
 2. **Run the program**
