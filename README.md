@@ -1,115 +1,99 @@
 
-# ProxyCardMaker 
+ProxyCardsTool – README
+=======================
 
-A compact desktop tool to collect and export **One Piece TCG** card art from deck lists.  
-It ships with a lightweight **Tkinter** GUI and can save **individual PNGs** or **ready‑to‑print A4 sheets (3×3)**.
+![App screenshot](main.png)
 
-> For personal/educational use only.
 
----
+⚠️ Notes
+- This tool is intended for personal use/prototyping. Respect copyrights and each data provider’s
+  terms. Do not publish generated images if that would infringe rights.
+- All trademarks/artwork belong to their respective owners.
 
-## ✨ What’s new
 
-- **Sources**: OnePiece.gg, limitlesstcg, or **Local folder**.
-- **Smart local search**: Besides card codes (e.g. `OP12-025`) you can put **free text** into the deck list (e.g. `3xKuzan`, `51xCard_back`).  
-  In *Local folder* mode all matching filenames are found (case‑insensitive).
-- **Art picker**: Enable *__I want to select picture art__* to pick from all found variants/thumbnails (web or local).
-- **A4 export (3×3)** with **format selection**: **PDF**, **PNG**, or **JPG**.
-- **DPI** setting that **applies to both** output modes (PNG and A4).
-- **Precise layout controls** for A4: **Card W×H (mm)**, **Margins (L/R, T/B)**, **Gaps (H, V)**.
-- **Corner crop marks** (length & gap in mm) for easier cutting.
-- **Download cards multiply** toggle (respects quantities from the deck list).
-- **Overwrite existing files** toggle (otherwise unique file names are created).
-- **Image processing** options: *Add white border*, *Upscale (min height)*.
+-----------
+1) *Features*
 
----
+- Multiple games:
+  • Pokémon 
+  • Yu‑Gi‑Oh! 
+  • MTG 
+  • One Piece 
+  
+- Search by name (e.g., “Pikachu ex”, “Lightning Bolt”, “Dark Magician”).
+  For One Piece, prefer set codes like “OP11-040”.
+- Optional: art selection (shows a gallery when multiple candidates exist).
+- Export as individual PNGs **or** as A4 3×3 sheets (PDF/PNG, selectable DPI).
+- Crop marks (length/gap/thickness/color), border (color/width), upscale to a minimum height.
+- Save settings to file (“Save As”) and load them back (“Load”).
 
-## 🖥️ UI overview
+-------------
+2) *How to run*
 
-1. **Source & Local folder**  
-   Choose *OnePiece.gg*, *limitlesstcg*, or *Local folder* (choose a directory with images).  
-   - If a line looks like a code (`OP12-025`), it fetches by code.  
-   - Otherwise it searches locally by **substring** (e.g. `Kuzan`, `Card_back`).
+Download the .exe from Releases and run it in a separate folder.
 
-2. **Save folder**  
-   Target directory for all outputs.
+--------------------
+3) *Quick usage guide*
 
-3. **Output mode**  
-   - **Save individual images (PNG)** – saves each (selected) art as a PNG.  
-   - **Save A4 sheet 3×3** – choose **PDF / PNG / JPG**; 
-   - *DPI applies to both*.
+A) Enter list (left)
+   - One card per line. Quantities are optional:
+       4x Pikachu ex
+       4 Pikachu ex
+       Pikachu ex
+   - For One Piece, set codes work best, e.g.: 4x OP11-040
 
-4. **A4 layout (mm)**  
-   - **Card W×H** (default **63 × 88 mm**)  
-   - **Margins** L/R, T/B (mm)  
-   - **Gaps** H, V (mm)  
-   - **Crop marks**: enable + set **len(mm)** & **gap(mm)**
+B) *Choose Game & Source (right)*
+   - Pokémon
+   - Yu‑Gi‑Oh! 
+   - MTG
+   - One Piece 
 
-5. **Image processing**  
-   - **Add white border** (px)  
-   - **Upscale (min height)** to ensure a minimum image height before placing
+C) *Folders*
+   - __Local folder (all games)__: 	base directory to search images recursively.
+   - __Save folder__: where PNGs/sheets are written.
 
-6. **Options**  
-   - **Download cards multiply** – obeys quantities like `4xOP01-025`  
-   - **I want to select picture art** – shows a thumbnail picker if multiple arts exist  
-   - **Overwrite existing files** – otherwise unique names like `name (1).png`
+D) Output mode
+   - “Save individual images (PNG)” or “Save A4 sheet 3×3” (format: PDF/PNG).
 
----
+E) A4 layout (mm)
+   - Card width/height, page margins, horizontal/vertical gaps.
+   - Crop marks: length/gap/thickness/color; crop marks sit **under the border** when a border is enabled.
 
-## 📥 Usage
+F) Image processing
+   - Border: pixel width + color (white/black).
+   - Upscale: resizes images to at least the given height (e.g., 1500 px).
 
-1) **Enter your deck list** (one item per line)  
-   You can mix codes and free text:
-   ```text
-   1xOP11-040
-   2xOP05-067
-   4xST18-001
-   4xEB01-061
-   4xOP10-072
-   2xOP07-064
-   3xKuzan
-   51xCard_back
-   ```
+G) Options
+   - Download cards multiply: uses per‑line quantities.
+   - I want to select picture art: opens a gallery if multiple results exist.
+   - Overwrite existing files: otherwise a numeric suffix is added.
 
-2) **Pick Source & folders**  
-   - For **Local folder** point to the directory that contains your images.
+H) Settings
+   - Save As: export current settings to .json.
+   - Load: import settings from .json.
 
-3) **Choose the output mode**  
-   - **PNG** per card *or* **A4 sheet 3×3** as **PDF/PNG/JPG**.  
-   - Set **DPI** (recommended **300**).
+------------------------------
 
-4) **Adjust A4 layout** (optional)  
-   - Card size, margins, gaps, crop‑marks.
+5) Tips & performance
 
-5) **Download Deck**  
-   - If *Select picture art* is on, choose the variant(s) you want.
+- Disable “Choose art” if you want to process many cards quickly.
+- Keep DPI only as high as needed for A4 sheets; higher DPI → larger files → longer saves.
+- Use upscale sparingly—it can noticeably slow down processing.
+- For One Piece, local mode is recommended (prepare files in a folder with sensible names).
 
-### Result
-- **PNG mode**: individual files are written to the save folder.  
-- **A4 mode**:  
-  - **PDF** → one multi‑page file  
-  - **PNG/JPG** → `A4_<name>_001.png/.jpg`, `A4_<name>_002...`
+------------------
+6) Troubleshooting
 
----
+- “No images found…”
+  • Check spelling (English card names often help). For One Piece, prefer set codes.
 
-## 🖨️ Printing tips (true scale)
+--------------------
+7) Known limitations
 
-- In the print dialog use **Actual size / 100%** (no “shrink to fit”).  
-- Paper size **A4**, no extra scaling in the driver.  
-- If your printer still overscales a little, reduce Card WxH in settings .
-
-----
-
-## ❓ Troubleshooting
-
-- **No images found**: check Internet (for web sources), spelling of codes, or the local folder path & filenames.  
-- **Output too large/small** when printing: verify **DPI**, and that your viewer uses **100%** scale.  
-- **Existing files get new suffixes**: disable **Overwrite existing files** if you want to truly overwrite.
-
----
+- Websites can change (markup/anti‑bot), which may require small code updates.
 
 
 
-## 🙏 Credits
-- Data/Images: **OnePiece.gg**, **limitlesstcg**  
-- Libraries: **Pillow**, **Requests**, **Tkinter**
+
+
+
